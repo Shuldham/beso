@@ -10,17 +10,17 @@ path_calculix = "D:\\FreeCAD\\bin\\ccx"  # path to the CalculiX solver
 #path_calculix = "/usr/bin/ccx"  # Linux example, may help shell command: which ccx
 #path_calculix = "d:\\soft\FreeCad\\FreeCAD_0.17.8264_x64_dev_win\\bin\\ccx"  # Windows example
 
-file_name = "FEMMeshGmsh.inp"  # file with prepared linear static analysis
+file_name = "Box_Mesh.inp"  # file with prepared linear static analysis
 
-elset_name = "SolidMaterial001Solid"  # string with name of the element set in .inp file
+elset_name = "SolidMaterialSolid"  # string with name of the element set in .inp file
 domain_optimized[elset_name] = True  # True - optimized domain, False - elements will not be removed
 domain_density[elset_name] = [0.00443e-6, 0.00443]  # equivalent density of the domain material for states of switch_elm
 domain_thickness[elset_name] = [1.0, 1.0]  # thickness of shell elements for states of switch_elm
 domain_offset[elset_name] = 0.0  # offset of shell elements
 domain_orientation[elset_name] = []  # orientations for each state referring to inp file,
                                      # e.g. for 2 states ["or1", "or1"], for isotropic material use empty list []
-domain_FI[elset_name] = [[("stress_von_Mises", 903.2e6)],  # inner tuples () for separate Failure indices
-                         [("stress_von_Mises", 903.2)]]  # new inner list [] for the next state of switch_elm
+domain_FI[elset_name] = [[("stress_von_Mises", 200.2e6)],  # inner tuples () for separate Failure indices
+                         [("stress_von_Mises", 200.2)]]  # new inner list [] for the next state of switch_elm
                         # Filure Indices definition in python tuples (separeate FI for each element state if there are more lists)
                         # Failure Indice FI = element stress / allowable value
                         # examples:
@@ -33,14 +33,14 @@ domain_same_state[elset_name] = False  # False - element states can differ, True
 
 
 elset_name = "SolidMaterialSolid"  # string with name of the element set in .inp file
-domain_optimized[elset_name] = False
+domain_optimized[elset_name] = True
 domain_density[elset_name] = [0.00443e-6, 0.00443]
-domain_FI[elset_name] = [[("stress_von_Mises", 903.2e6)],  # inner tuples () for separate Failure indices
-                         [("stress_von_Mises", 903.2)]]
+domain_FI[elset_name] = [[("stress_von_Mises", 200.2e6)],  # inner tuples () for separate Failure indices
+                         [("stress_von_Mises", 200.2)]]
 domain_material[elset_name] = ["*ELASTIC \n114000e-6,  0.3",  # material definition after CalculiX *MATERIAL card, use \n for line break
                                "*ELASTIC \n114000,  0.3"]
 
-mass_goal_ratio = 0.1  # the goal mass as a fragment of the full mass of optimized domains,
+mass_goal_ratio = 0.9  # the goal mass as a fragment of the full mass of optimized domains,
                        # i.e. fragment of mass evaluated from effective density and volumes of optimized elements in the highest state
 
 continue_from = ""  # if not "", optimization will load element states from the given files,

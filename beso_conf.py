@@ -6,11 +6,11 @@ path = "."  # path to the working directory (without whitespaces) where the init
 #path = "."  # example - in the current working directory
 #path = "~/tmp/beso/"  # Linux example
 #path = "D:\\tmp\\"  # Windows example
-path_calculix = "d:\\soft\\FreeCad\\FreeCAD_0.17.10993_x64_dev_win\\bin\\ccx"  # path to the CalculiX solver
+path_calculix = "D:\\FreeCAD\\bin\\ccx"  # path to the CalculiX solver
 #path_calculix = "/usr/bin/ccx"  # Linux example, may help shell command: which ccx
 #path_calculix = "d:\\soft\FreeCad\\FreeCAD_0.17.8264_x64_dev_win\\bin\\ccx"  # Windows example
 
-file_name = "Plane_Mesh.inp"  # file with prepared linear static analysis
+file_name = "wiki_files/Runs/2D/Example 1/Run1/Plane_mesh.inp"  # file with prepared linear static analysis
 
 elset_name = "SolidMaterialElementGeometry2D"  # string with name of the element set in .inp file (CASE sensitive!)
 domain_optimized[elset_name] = True  # True - optimized domain, False - elements will not be removed
